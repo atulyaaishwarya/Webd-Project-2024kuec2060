@@ -260,91 +260,93 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Portal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
- <?php
- session_start();
- $users = [
-   "atulya" => "pass123",
-   "admin" => "admin@123",
-   "guest" => "guest2025",
-   "developer" => "dev456",
-   "tester" => "test789"
- ];
 
+<div id="login-container" class="login-container">
+  <h2>Login Portal</h2>
+  <p id="error" class="error" style="display:none;"></p>
 
+  <form id="loginForm">
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter username" required />
 
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter password" required />
 
- if (isset($_GET["logout"])) {
-   session_unset();
-   session_destroy();
-   header("Location: " . $_SERVER["PHP_SELF"]);
-   exit();
- }
+    <button type="submit">Log In</button>
+  </form>
 
+  <div class="login-footer">
+    <p><a href="index.html" style="color:#007bff; text-decoration:none;">Back to Home</a></p>
+  </div>
+</div>
 
+<div id="welcome-container" class="login-container" style="display:none;">
+  <h2 class="success">Welcome, <span id="usernameDisplay"></span></h2>
+  <p>You are successfully logged in.</p>
 
+  <div class="logout">
+    <button id="logoutBtn">Logout</button>
+  </div>
+</div>
 
- if ($_SERVER["REQUEST_METHOD"] === "POST") {
-   $username = trim($_POST["username"]);
-   $password = trim($_POST["password"]);
+<script>
+// ✨ SAME USERS AS YOUR PHP CODE
+const users = {
+  "atulya": "pass123",
+  "admin": "admin@123",
+  "guest": "guest2025",
+  "developer": "dev456",
+  "tester": "test789"
+};
 
+// Check login status on page load
+window.onload = () => {
+  const loggedUser = localStorage.getItem("user");
+  if (loggedUser) {
+    showWelcome(loggedUser);
+  }
+};
 
+// Handle login form submit
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const error = document.getElementById("error");
 
-   if (array_key_exists($username, $users) && $users[$username] === $password) {
-     $_SESSION["user"] = $username;
-   } else {
-     $error = "Invalid username or password";
-   }
- }
- ?>
+  if (users[username] && users[username] === password) {
+    localStorage.setItem("user", username);
+    showWelcome(username);
+  } else {
+    error.textContent = "Invalid username or password";
+    error.style.display = "block";
+  }
+});
 
+// Show welcome screen
+function showWelcome(username) {
+  document.getElementById("login-container").style.display = "none";
+  document.getElementById("welcome-container").style.display = "block";
+  document.getElementById("usernameDisplay").textContent = username;
+}
 
+// Handle logout
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  localStorage.removeItem("user");
+  location.reload();
+});
+</script>
 
-
- <?php if (isset($_SESSION["user"])): ?>
-   <div class="login-container">
-     <h2 class="success">Welcome, <?php echo htmlspecialchars($_SESSION["user"]); ?> </h2>
-     <p>You are successfully logged in.</p>
-     <div class="logout">
-       <a href="?logout=true">Logout</a>
-     </div>
-   </div>
-
-
-
-
- <?php else: ?>
-   <div class="login-container">
-     <h2>Login Portal</h2>
-     <?php if (!empty($error)) echo "<p class='error'>$error</p>"; ?>
-
-
-
-
-     <form method="POST">
-       <label for="username">Username</label>
-       <input type="text" id="username" name="username" placeholder="Enter username" required />
-
-
-
-
-       <label for="password">Password</label>
-       <input type="password" id="password" name="password" placeholder="Enter password" required />
-
-
-
-
-       <button type="submit">Log In</button>
-     </form>
-
-
-
-
-     <div class="login-footer">
-       <p><a href="index.php" style="color:#007bff; text-decoration:none;">Back to Home</a></p>
-     </div>
-   </div>
- <?php endif; ?>
 </body>
 </html>
