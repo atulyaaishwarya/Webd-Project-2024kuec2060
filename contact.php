@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DPS Contact Us</title>
+<style>
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ body {
+   background-color: #f0f4f8;
+   color: #333;
+   padding: 40px 20px;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
+
+ header {
+   background-color: #51c21d;
+   width: 100%;
+   padding: 20px 0;
+   text-align: center;
+   color: white;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+   margin-bottom: 40px;
+ }
+
+ header h1 {
+   font-size: 2.5rem;
+   letter-spacing: 2px;
+ }
+
+ .container {
+   background-color: white;
+   max-width: 700px;
+   width: 100%;
+   padding: 30px 40px;
+   border-radius: 10px;
+   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+ }
+
+ h2 {
+   color: #5cbd25;
+   margin-bottom: 25px;
+   text-align: center;
+   font-weight: 700;
+   letter-spacing: 1.2px;
+ }
+
+ form {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+ }
+
+ label {
+   font-weight: 600;
+   margin-bottom: 6px;
+   display: block;
+   color: #4fad19;
+ }
+
+ input[type="text"],
+ input[type="email"],
+ textarea {
+   padding: 12px 15px;
+   border: 2px solid #34af28;
+   border-radius: 6px;
+   font-size: 1rem;
+   resize: vertical;
+   transition: border-color 0.3s ease;
+   width: 100%;
+   font-family: inherit;
+ }
+
+ input[type="text"]:focus,
+ input[type="email"]:focus,
+ textarea:focus {
+   border-color: #ffcc00;
+   outline: none;
+ }
+
+ textarea {
+   min-height: 120px;
+ }
+
+ button {
+   background-color: #3d9926;
+   color: white;
+   border: none;
+   padding: 15px;
+   font-size: 1.1rem;
+   border-radius: 8px;
+   cursor: pointer;
+   font-weight: 700;
+   transition: background-color 0.3s ease;
+ }
+
+ button:hover {
+   background-color: #247a18;
+ }
+
+ div table {
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+   background-color: #f9f9f9;
+ }
+
+ div.table-container table {
+   width: 100%;
+   max-width: 400px;
+   border-collapse: collapse;
+   font-family: Arial, sans-serif;
+   background: white;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+   overflow: hidden;
+ }
+
+ div table td {
+   padding: 12px 16px;
+   border-bottom: 1px solid #ddd;
+   vertical-align: middle;
+   color: #3b3b3b;
+ }
+ div td:first-child {
+   font-weight: 600;
+   color: #222;
+   width: 140px;
+ }
+ div tr:last-child td {
+   border-bottom: none;
+ }
+
+ @media (max-width: 480px) {
+   .container {
+     padding: 20px;
+   }
+ }
+
+ /* SUCCESS MESSAGE BOX LIKE PREVIOUS PAGE */
+ .success-box {
+   display: none;
+   background: #e6ffe6;
+   border-left: 6px solid #1b8f1b;
+   padding: 20px;
+   margin-bottom: 20px;
+   border-radius: 6px;
+   font-size: 18px;
+   color: #0d660d;
+   text-align: center;
+   font-weight: 600;
+ }
+</style>
+</head>
+<body>
+
+<header>
+ <h1>Delhi Public School</h1>
+</header>
+
+<div class="success-box" id="successMessage">
+  ✔ Message Sent Successfully! We will contact you soon.
+</div>
+
+<div class="container">
+ <h2>Contact Us</h2>
+ <form id="contactForm" action="#" method="POST">
+   <label for="name">Full Name</label>
+   <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+   <label for="email">Email Address</label>
+   <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+   <label for="subject">Subject</label>
+   <input type="text" id="subject" name="subject" placeholder="Subject of your message" required />
+
+   <label for="message">Message</label>
+   <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+   <button type="submit">Send Message</button>
+ </form>
+
+ <div>
+   <table>
+      <tr><td><strong>Address:</strong></td><td>Delhi Public School, Sector 12, New Delhi, India</td></tr>
+      <tr><td><strong>Phone:</strong></td><td>+91 12345 67890</td></tr>
+      <tr><td><strong>Email:</strong></td><td>info@dps.edu.in</td></tr>
+      <tr><td><strong>Hours:</strong> </td><td>Mon - Fri, 9:00 AM to 5:00 PM</td></tr>
+   </table>
+ </div>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    document.getElementById("contactForm").style.display = "none";
+    document.getElementById("successMessage").style.display = "block";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>School Website</title>
+   <link rel="stylesheet" href="styles.css?v=1">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <div class="header">
+       <img src="delhi-public-school-logo-png_seeklogo-266920.png" alt="DPS Logo" class="logo">
+       <p class="title">Delhi Public School</p>
+       <nav class="nav-links">
+           <a href="home.php" target="_blank">Home</a>
+           <a href="admission.php" target="_blank">Admission</a>
+           <a href="login.php" target="_blank">Portal-Login</a>
+           <a href="contact.php" target="_blank">Contact us</a>
+       </nav>
+   </div>
+
+
+
+
+   <section id="home" class="hero">
+       <img src="delhi-public-schools-rawat-bhata-road-kota-rajasthan-schools-f8gv1g7lpx.avif" alt="Banner" class="banner-image">
+       <div class="container">
+           <h2>Welcome to Our School</h2>
+           <p>Empowering minds, shaping futures.</p>
+           <a href="contact.php" target="_blank" class="btn">Get in Touch</a>
+       </div>
+   </section>
+
+
+
+
+   <section id="about" class="about">
+       <div class="container">
+           <h2>About Us</h2>
+           <p style="color: black; text-align: center;">Our school is committed to providing a nurturing environment where students can thrive academically, socially, and personally. With experienced faculty and modern facilities, we prepare our students for success in an ever-changing world.</p>
+           <div class="stats">
+               <div class="stat">
+                   <h3>500+</h3>
+                   <p>Students</p>
+               </div>
+               <div class="stat">
+                   <h3>50+</h3>
+                   <p>Teachers</p>
+               </div>
+               <div class="stat">
+                   <h3>20+</h3>
+                   <p>Years of Excellence</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+
+
+
+   <section id="programs" class="programs">
+       <div class="container">
+           <h2>Our Programs</h2>
+           <div class="program-grid">
+               <div class="program">
+                   <h3>Elementary</h3>
+                   <p>Foundation for lifelong learning.</p>
+               </div>
+               <div class="program">
+                   <h3>Middle School</h3>
+                   <p>Building confidence and skills.</p>
+               </div>
+               <div class="program">
+                   <h3>High School</h3>
+                   <p>Preparing for higher education.</p>
+               </div>
+               <div class="program">
+                   <h3>Extracurricular</h3>
+                   <p>Sports, arts, and clubs.</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+
+
+
+   <section id="admissions" class="admissions">
+       <div class="container">
+           <h2>Admissions</h2>
+           <p style="margin-bottom: 20px; background: linear-gradient(to right, yellow, orange); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Join our community of learners. We welcome applications year-round.</p>
+           <a href="admission.php" class="btn" target="_blank"c>Apply Now</a>
+       </div>
+   </section>
+
+
+
+
+   <section id="contact" class="contact">
+       <div class="container">
+           <h2>Contact Us</h2>
+           <div class="contact-info">
+               <div class="info">
+                   <h3>Address</h3>
+                   <p>In Front of Gapernath Forest Chowki,<br>Village Rathkankara</p>
+               </div>
+               <div class="info">
+                   <h3>Phone</h3>
+                   <p>9142245468</p>
+               </div>
+               <div class="info">
+                   <h3>Email</h3>
+                   <p>dps@school.edu</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+
+
+
+   <footer>
+       <div class="container">
+           <p>&copy; 2025 Delhi Public School. All rights reserved.</p>
+       </div>
+   </footer>
+</body>
+</html>

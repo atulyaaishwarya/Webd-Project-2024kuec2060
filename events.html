@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>School Events - Delhi Public School</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #f5f8fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .back-btn:hover {
+      background-color: #003366;
+    }
+    .welcome {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .welcome h2 {
+      font-size: 2rem;
+      color: #004080;
+      margin-bottom: 15px;
+    }
+    .welcome p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .events-gallery {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .events-gallery h2 {
+      text-align: center;
+      color: #004080;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .event-item {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .event-item:hover {
+      transform: translateY(-5px);
+    }
+    .event-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .event-item .caption {
+      padding: 15px;
+      text-align: center;
+    }
+    .event-item h3 {
+      color: #004080;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    .event-item p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background-color: #004080;
+      color: white;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      width: 98vw;
+      height: 98vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .close-modal {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .close-modal:hover {
+      color: #ccc;
+    }
+    /* Events Calendar Table Styles */
+    /* Events Calendar Table Styles */
+.events-calendar {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.events-calendar h2 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Modern Table Style */
+.events-calendar table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.events-calendar thead {
+  background: linear-gradient(135deg, #004080, #0059b3);
+  color: white;
+}
+
+.events-calendar th {
+  padding: 16px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.events-calendar tbody tr {
+  transition: background 0.3s ease, transform 0.15s ease;
+}
+
+.events-calendar tbody tr:nth-child(even) {
+  background: #f3f7fc;
+}
+
+.events-calendar td {
+  padding: 16px 14px;
+  border-bottom: 1px solid #e5eaf0;
+}
+
+/* Hover Effect */
+.events-calendar tbody tr:hover {
+  background: #e7f1ff;
+  transform: scale(1.01);
+}
+
+/* Remove last row border */
+.events-calendar tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Small screen improvements */
+@media (max-width: 600px) {
+  .events-calendar {
+    padding: 15px;
+  }
+
+  .events-calendar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .events-calendar th,
+  .events-calendar td {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <button class="back-btn" onclick="window.location.href='home.html'">← Back to Home</button>
+    <h1>Delhi Public School Events</h1>
+  </header>
+
+  <section class="welcome">
+    <h2>School Events Gallery</h2>
+    <p>Celebrating memorable moments and achievements at Delhi Public School</p>
+  </section>
+
+  <section class="events-gallery">
+    <h2>Our Events</h2>
+    <div class="gallery-grid">
+      <div class="event-item">
+        <img src="annual day.jpg" alt="Annual Day Celebration" />
+        <div class="caption">
+          <h3>Annual Day</h3>
+          <p>A grand celebration showcasing student talents and achievements throughout the year.</p>
+        </div>
+      </div>
+      <div class="event-item">
+        <img src="dance competition.jpg" alt="Dance Competition" />
+        <div class="caption">
+          <h3>Dance Competition</h3>
+          <p>Students express creativity and rhythm through various dance forms and performances.</p>
+        </div>
+      </div>
+      <div class="event-item">
+        <img src="independence.jpg" alt="Independence Day Celebration" />
+        <div class="caption">
+          <h3>Independence Day</h3>
+          <p>Honoring our nation's freedom with patriotic fervor and cultural programs.</p>
+        </div>
+      </div>
+      <div class="event-item">
+        <img src="republic.jpg" alt="Republic Day Celebration" />
+        <div class="caption">
+          <h3>Republic Day</h3>
+          <p>Commemorating the adoption of our Constitution with parades and cultural displays.</p>
+        </div>
+      </div>
+      <div class="event-item">
+        <img src="sports day.jpg" alt="Sports Day" />
+        <div class="caption">
+          <h3>Sports Day</h3>
+          <p>A day of athletic excellence, teamwork, and healthy competition among students.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Calendar Table -->
+  <section class="events-calendar">
+    <h2>Upcoming Events Calendar</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Event</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>March 15, 2025</td>
+          <td>9:00 AM - 5:00 PM</td>
+          <td>Annual Sports Day</td>
+          <td>Show your athletic skills and compete in various sports events</td>
+        </tr>
+        <tr>
+          <td>April 10, 2025</td>
+          <td>10:00 AM - 4:00 PM</td>
+          <td>Science Fair</td>
+          <td>Showcase innovative science projects and experiments</td>
+        </tr>
+        <tr>
+          <td>May 5, 2025</td>
+          <td>6:00 PM - 9:00 PM</td>
+          <td>Cultural Fest</td>
+          <td>Celebrate diversity through music, dance, and cultural performances</td>
+        </tr>
+        <tr>
+          <td>June 20, 2025</td>
+          <td>2:00 PM - 4:00 PM</td>
+          <td>Parent-Teacher Meeting</td>
+          <td>Monthly meeting to discuss student progress and development</td>
+        </tr>
+        <tr>
+          <td>July 15, 2025</td>
+          <td>9:00 AM - 12:00 PM</td>
+          <td>Independence Day Celebration</td>
+          <td>Patriotic programs and cultural activities</td>
+        </tr>
+        <tr>
+          <td>August 10, 2025</td>
+          <td>10:00 AM - 3:00 PM</td>
+          <td>Annual Day</td>
+          <td>Grand celebration of student talents and achievements</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    &copy; 2025 Delhi Public School. All Rights Reserved.
+  </footer>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <img id="modalImage" src="" alt="">
+    </div>
+  </div>
+
+  <script>
+    // Get modal elements
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Add click event to all event images
+    document.querySelectorAll('.event-item img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function() {
+        modal.style.display = 'flex';
+        modalImage.src = this.src;
+        modalImage.alt = this.alt;
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      });
+    });
+
+    // Close modal when clicking the close button
+    closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+    });
+  </script>
+</body>
+</html>

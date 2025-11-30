@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DPS Admission Portal</title>
+<style>
+ * {
+   box-sizing: border-box;
+ }
+
+ body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   background: rgb(172, 235, 247);
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   min-height: 100vh;
+ }
+
+ .container {
+   background: white;
+   max-width: 500px;
+   width: 90%;
+   margin: 40px 0;
+   padding: 30px;
+   border-radius: 8px;
+   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+ }
+
+ h1 {
+   text-align: center;
+   color: #005a9c;
+   margin-bottom: 25px;
+ }
+
+ form {
+   display: flex;
+   flex-direction: column;
+ }
+
+ label {
+   margin-bottom: 6px;
+   font-weight: 600;
+   color: #333;
+ }
+
+ input[type="text"],
+ input[type="email"],
+ input[type="number"],
+ select,
+ textarea {
+   padding: 10px;
+   border: 1.5px solid #ccc;
+   border-radius: 5px;
+   margin-bottom: 20px;
+   font-size: 16px;
+   transition: border-color 0.3s;
+ }
+
+ input[type="text"]:focus,
+ input[type="email"]:focus,
+ input[type="number"]:focus,
+ select:focus,
+ textarea:focus {
+   border-color: #005a9c;
+   outline: none;
+ }
+
+ textarea {
+   resize: vertical;
+   min-height: 80px;
+ }
+
+ button {
+   background-color: #005a9c;
+   color: white;
+   font-size: 18px;
+   padding: 12px;
+   border: none;
+   border-radius: 6px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ }
+
+ button:hover {
+   background-color: #004080;
+ }
+
+ .footer {
+   text-align: center;
+   margin-top: 30px;
+   color: #777;
+   font-size: 14px;
+ }
+
+ .admission-marquee {
+   height: 1%;
+   font-size: 30px;
+   color: red;
+   opacity: 0.8;
+   margin: 0;
+ }
+
+ /* SUCCESS MESSAGE BOX */
+ .success-box {
+   padding: 20px;
+   background: #e7ffe7;
+   border-left: 6px solid #1b8f1b;
+   border-radius: 6px;
+   font-size: 18px;
+   color: #0d660d;
+   display: none;
+   margin-top: 20px;
+ }
+</style>
+</head>
+<body>
+<div class="container" id="mainContainer">
+ <h1>DPS Admission Portal</h1>
+
+ <form id="admissionForm" action="#" method="post">
+
+   <label for="studentName">Student Name *</label>
+   <input type="text" id="studentName" name="studentName" placeholder="Enter full name" required />
+
+   <label for="age">Age *</label>
+   <input type="number" id="age" name="age" min="3" max="20" placeholder="Enter age" required />
+
+   <label for="grade">Grade Applying For *</label>
+   <select id="grade" name="grade" required>
+     <option value="" disabled selected>Select Grade</option>
+     <option value="Nursery">Nursery</option>
+     <option value="KG">KG</option>
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5</option>
+     <option value="6">6</option>
+     <option value="7">7</option>
+     <option value="8">8</option>
+     <option value="9">9</option>
+     <option value="10">10</option>
+     <option value="11">11</option>
+     <option value="12">12</option>
+   </select>
+
+   <label for="parentName">Parent/Guardian Name *</label>
+   <input type="text" id="parentName" name="parentName" placeholder="Enter parent's full name" required />
+
+   <label for="contact">Contact Number *</label>
+   <input type="text" id="contact" name="contact" placeholder="Enter contact number" pattern="[0-9]{10}" title="10 digit phone number" required />
+
+   <label for="email">Email Address</label>
+   <input type="email" id="email" name="email" placeholder="Enter email (optional)" />
+
+   <label for="address">Address *</label>
+   <textarea id="address" name="address" placeholder="Enter residential address" required></textarea>
+
+   <button type="submit">Submit Application</button>
+ </form>
+
+ <!-- SUCCESS MESSAGE -->
+ <div class="success-box" id="successMessage">
+   <h3>🎉 Form Successfully Submitted!</h3>
+   <p><b>📅 Exam Date:</b> 12 January 2025</p>
+   <p><b>⏰ Time:</b> 10:00 AM</p>
+   <p><b>📍 Venue:</b> Delhi Public School (DPS)</p>
+ </div>
+
+ <div class="footer">
+   &copy; 2025 Delhi Public School
+ </div>
+
+ <p class="admission-marquee">
+  <marquee><b><i>Admissions Open for session 2025-26. Registration forms are available on all days in the school premises.</i></b></marquee>
+ </p>
+</div>
+
+<script>
+document.getElementById("admissionForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    document.getElementById("admissionForm").style.display = "none";
+    document.getElementById("successMessage").style.display = "block";
+});
+</script>
+
+</body>
+</html>
